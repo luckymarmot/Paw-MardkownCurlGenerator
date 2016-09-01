@@ -1,9 +1,10 @@
+#!/usr/bin/env sh
 base=$1
 apiflow=$2
 
-git describe --abbrev=0 --tags
-
-rm -rf ./releases/current
+git pull
+tag=$(git describe --abbrev=0 --tags)
+mv ./releases/current/ ./releases/$tag
 mkdir -p ./releases/current
 
 cd $apiflow
